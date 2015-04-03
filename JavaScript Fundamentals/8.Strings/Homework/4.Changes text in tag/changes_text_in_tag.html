@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Changes text in tag</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 37px;
+			margin-left: 28px;
+			font-size: 1.4em;
+			color: #716D69;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		You are given a text. Write a function that changes the text in all regions:
+	</h3>
+		<ul id="" class="">
+			<li>&lt upcase &gt text &lt/upcase &gt to uppercase.</li>
+			<li>&lt lowcase>text &lt/lowcase> to lowercase</li>
+			<li>&lt mixcase &gt text &lt/mixcase &gt to mix casing(random)</li>
+		</ul>
+	<p>
+		We are &lt mixcase &gt living &lt/mixcase&gt in a &lt upcase &gt yellow submarine &lt/upcase&gt. We &lt mixcase&gt don't &lt/mixcase&gt have &lt lowcase&gt anything &lt/lowcase&gt else.
+	</p>
+	<h3>
+		The expected result:
+	</h3>
+	<p>
+		We are LiVinG in a YELLOW SUBMARINE. We dOn'T have anything else.<br>
+    	Regions can be nested.
+    </p>
+	<br/>
+
+	<div>
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+            var	str = 'We are <mixcase>living</mixcase> in a <upcase>yellow submarine</upcase>. We <mixcase>don\'t</mixcase> have <lowcase>anything</lowcase> else.';
+
+			var	printResalt = document.getElementById("printResalt");
+
+
+            printResalt.innerHTML = changesText(str);
+        };
+
+        function changesText(str) {
+        	var mixcase = bildTag('<mixcase>', '</mixcase>'),
+        		upcase = bildTag('<upcase>', '</upcase>'),
+        		lowcase = bildTag('<lowcase>', '</lowcase>');
+
+
+        	str = str.tagChange(upcase, 'toUpperCase'); 
+
+        	str = str.tagChange(lowcase, 'toLowerCase');
+
+        	str = str.tagChange(mixcase, 'toMixCase');
+
+        	return str;
+
+        }
+
+
+        String.prototype.tagChange = function(obj, fun) {
+
+        	var str = this,
+        		value = '';
+
+        	// Given tag area
+        	var tagArea = str.slice(str.indexOf(obj.openTag), str.indexOf(obj.closedTag) + obj.closedTag.length);
+
+        	while(tagArea !== ''){
+        		
+        		// making string value tag areata
+        		value = tagArea.slice(tagArea.indexOf(obj.openTag) + obj.openTag.length, tagArea.indexOf(obj.closedTag));
+
+        		// replacing the tag area with the modified value
+        		str = str.replace(tagArea, value[fun]())//modifyingValue(value, fun));
+
+        		// making a new tag zone if any
+        		tagArea = str.slice(str.indexOf(obj.openTag), str.indexOf(obj.closedTag) + obj.closedTag.length);
+        	};
+
+
+        //	function modifyingValue(str, fun) {
+        //		
+        //		switch(fun){
+        //			case 'toUpperCase': return str.toUpperCase();
+        //			case 'toLowerCase': return str.toLowerCase();
+        //			case 'toMixCase': return str.toMixCase();
+        //			default: alert("Error function!");
+        //		}
+        //	}
+
+        	return str;
+        }
+
+
+        String.prototype.toMixCase = function() {
+        	var mixStr = '',
+        		str = this,
+        		random;
+
+        	for (var i = 0; i < str.length; i++) {
+        		random = Math.random();
+
+        		if (random < 0.50) {
+        			mixStr += str[i].toUpperCase();
+        		} else{
+        			mixStr += str[i].toLowerCase();
+        		};
+        	};
+
+        	return mixStr;
+        }
+
+
+        function bildTag(openTag, closedTag) {
+        	return {
+        		openTag: openTag,
+        		closedTag: closedTag,
+        	};
+        }
+
+
+    </script>
+
+</body>
+</html>

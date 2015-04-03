@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Counts number in given array</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 37px;
+			margin-left: 20px;
+			font-size: 1.4em;
+			color: #716D69;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a function that counts how many times given number appears in given array. Write a test function to check if the function is working correctly.<br>
+		Example: [4, 5, 8, 4, 9, 8, 4] => 4 (3 times );
+	</h3>
+	<br/>
+
+	<!--<label>Enter one integer !</label>-->
+	<div>
+		<label for="inputArr">Enter array: </label>
+    	<input type="text" id="inputArr" />
+    	<br>
+    	<label for="number">Enter number: </label>
+    	<input type="text" id="number" />
+
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+        	var arr = document.getElementById("inputArr").value.split(', ').map(Number),
+            	number = parseInt(document.getElementById("number").value),
+            	printResalt = document.getElementById("printResalt");
+                
+            var resalt = countNumberOfArray(arr, number);
+            
+        	printResalt.innerHTML = number + ' (' + resalt + ' times )';
+        };
+
+
+        function countNumberOfArray(arr, num) {
+        	var cont = 0;
+        	for(var index in arr){
+        		if (num === arr[index]) {
+        			cont++;
+        		};
+        	}
+        	return cont;
+        };
+
+        //Test function
+        function testFunction(fun, param) {
+        	fun = countNumberOfArray;
+        	var bul = fun(param);
+        }
+    </script>
+
+</body>
+</html>

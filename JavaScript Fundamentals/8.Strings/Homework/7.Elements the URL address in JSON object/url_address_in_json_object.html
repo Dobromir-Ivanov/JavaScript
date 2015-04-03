@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Elements the URL address in JSON object</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 37px;
+			margin-left: 28px;
+			font-size: 1.4em;
+			color: #716D69;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a script that parses an URL address given in the format:<br>
+		[protocol]://[server]/[resource]<br>
+		and extracts from it the [protocol], [server] and [resource] elements. Return the elements in a JSON object.<br>
+		For example from the URL <br>
+		http://www.devbg.org/forum/index.php<br>
+		the following information should be extracted:
+
+	</h3>
+	<p>Example:</p>
+	<p>
+		{protocol: 'http',<br>
+		server: 'www.devbg.org', <br>
+ 		resource: '/forum/index.php'}
+    </p>
+	<br/>
+
+	<div>
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+            var	str = 'http://www.devbg.org/forum/index.php';
+
+			var	printResalt = document.getElementById("printResalt");
+
+			var elementsOfUrl = extractsURL(str);
+            console.log(elementsOfUrl);
+        };
+
+        function extractsURL(str) {
+        	var protocol, server, resource;
+
+
+        	protocol = str.slice(0, str.indexOf('w')),
+        	str = str.replace(protocol, '');
+        	server = str.slice(0, str.indexOf('/')),
+        	str = str.replace(server, '');
+        	resource = str;
+
+        	return {
+        		protocol: protocol,
+				server: server,
+				resource: resource,
+			}
+        }
+    </script>
+
+</body>
+</html>

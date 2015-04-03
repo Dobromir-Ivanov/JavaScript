@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Extract Emails of the text</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 37px;
+			margin-left: 28px;
+			font-size: 1.4em;
+			color: #716D69;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a function for extracting all email addresses from given text. All substrings that match the format &lt;identifier&gt;@&lt;host&gt;…&lt;domain&gt; should be recognized as emails. Return the emails as array of strings.
+	</h3>
+	<br/>
+	
+	<p>The result is the console!</p>
+	<div>
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+            var	printResalt = document.getElementById("printResalt");
+            	str =  'this is mail tha Dobromir: dobromirivanov25@gmail.com,  "<dsfassdfhsdfarkal@gmail.com>," rodnsdfald ferdfnson "<rfernsdfson@gmal.com>," Affdmdol Gondfgale "<gyfanamosl@gmail.com>," truform техно "< pidfpinfg@truformdftechnoproducts.com> "NiTsdfeSh ThIdfsKaRe" <nthfsskare@ysahoo.in>, "akasdfsh kasdfstla" <akashkatsdfsa@yahsdfsfoo.in>, "Bisdsdfamal Prakaasdsh" bimsdaalprakash@abv.bg,; "Milisdfsfnd ansdfasdfnsftwar" <dfdmilifsd.ensfdfcogndfdfatia@gmail.com> "';
+
+            var myArrOfEmail = extractEmails(str);
+            //printResalt.innerHTML = extractEmails(str);
+            for(var index in myArrOfEmail){
+                console.log(myArrOfEmail[index]);
+            };
+        };
+
+        function extractEmails(tex) {
+            return tex.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
+        };
+
+
+    </script>
+
+</body>
+</html>

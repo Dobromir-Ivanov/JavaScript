@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Deep copy of an object</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 37px;
+			margin-left: 28px;
+			font-size: 1.4em;
+			color: #716D69;
+		}
+		input {
+			height: 20px;
+			width: 80px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a function that makes a deep copy of an object<br>
+		-The function should work for both primitive and reference types
+	</h3>
+	<br/>
+
+	<p>First person is;<br>
+    	Name: Petar  &nbsp;City:Sofia &nbsp;Street: Qne samdanski
+	</p>
+	<div>
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<label>Second Person:</label>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+		var deepCopy = function (oldObject) {
+        	var tempClone = {};
+
+        	for (var prop in oldObject) {
+            	tempClone[prop] = oldObject[prop];
+        	};
+
+        	if (typeof (oldObject[prop]) == "object") {
+            	tempClone[prop] = deepCopy(oldObject[prop]);
+        	}
+
+            return tempClone;
+        };
+
+        function Resalt() {
+            var	printResalt = document.getElementById("printResalt");
+
+            	var petar = {
+            		firstName: "Petar",
+            		secondName: 'Giorgiev',
+            		age: 30,
+            		adres:{
+            			city: "Sofia",
+            			street: "Qne samdanski",
+            		}
+            	};
+
+
+            	var ivo = deepCopy(petar);
+            	ivo.firstName = "Ivo";
+            	ivo.adres.city = "Burgas";
+            	ivo.adres.street = "Vasil Levski";
+
+
+        	printResalt.innerHTML = 'Name: ' + ivo.firstName + '  City: ' + ivo.adres.city + '  Street: ' + ivo.adres.street;
+        };
+    </script>
+
+</body>
+</html>

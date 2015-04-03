@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Most frequent number in an array</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 35px;
+			margin-left: 20px;
+			font-size: 1.4em;
+			color: #716D69;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a program that finds the most frequent number in an array.
+		<br>
+		 Example: {4, 1, 1, 4, 2, 3, 4, 4, 1, 2, 4, 9, 3} => 4 (5 times)
+	</h3>
+	<br/>
+
+	<label>Enter sequence of numbers divided <b>", "</b>!</label>
+	<div>
+		<input id="numFir">
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+            var inputFirst =  document.getElementById("numFir").value;
+            var printResalt = document.getElementById("printResalt");
+
+            
+            var frequentNumber = frequentceOfNnumbers(inputFirst);
+
+        	printResalt.innerHTML = frequentNumber;
+        };
+
+        function frequentceOfNnumbers(arr) {
+        	var arr = sortArrays(arr),
+        		sequenceNumber,
+        		contSequence = 1,
+        		biggerSequenceNumber,
+        		biggerContSequence = 0;
+
+        		//while(arr.length > 0){
+        		//	sequenceNumber = arr[0];
+
+        			for (var i = 0; i < arr.length; i++) {
+        				if (arr[i] === arr[i + 1]) {
+        					sequenceNumber = arr[i];
+        					contSequence++;
+        				
+
+        					if (contSequence > biggerContSequence) {
+        						biggerContSequence = contSequence;
+        						biggerSequenceNumber = sequenceNumber;
+        					};
+
+        				}else {
+        					contSequence = 1;
+        				};
+        			};
+
+				//};
+
+				return biggerSequenceNumber + " (" + biggerContSequence + " times)";
+        }
+
+
+        function sortArrays (strOfArray) {
+        	var arrOfNumbers = strOfArray.split(", ").map(Number),
+        		sortArray = [],
+        		minNumber,
+        		index,
+        		lengthOfArrNum = true;
+
+
+        	while(arrOfNumbers.length > 0){
+        		
+        		minNumber = minValue(arrOfNumbers);
+        		sortArray.push(minNumber);
+
+        		index = arrOfNumbers.indexOf(minNumber);
+        		arrOfNumbers.splice(index,1);
+        		lengthOfArrNum = arrOfNumbers.length;
+        	}
+
+        	// Function for min number of array
+        	function minValue (arr) {
+        		var minNumber = arr[0];
+        		for (var i = 0; i < arr.length; i++) {
+
+        			if (minNumber> arr[i]) {
+        				minNumber = arr[i];
+        			};
+        		};
+
+        		return minNumber;
+        	}
+
+        	return sortArray;
+        }
+
+
+
+
+        //  var calls = 0;
+		//	function iSuspectToBeLoopingInfititely( calls) {
+  		//		calls += 1;
+  		//		if (calls > 100) { debugger; }
+		//	}
+    </script>
+
+</body>
+</html>

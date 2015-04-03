@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Checks point of circle</title>
+</head>
+<body>
+	<h3>
+		Write an expression that checks if given point(x, y) is within a circle K(O, 5).
+	</h3>
+	
+	<label>Enter cordinat position for point(x,y)</label>
+	<table>
+		<tr>
+			<td><label for="x">X: </label></td>
+			<td><input id="x"></td>
+		</tr>
+		<tr>
+			<td><label for="y">Y: </label></td>
+			<td><input  id="y"></td>
+		</tr>
+	</table>
+
+	<button onclick="resalt()">Resalt</button>
+	<label id="printResalt"></label>
+	
+	<script type="text/javascript">
+ 		var x= document.getElementById("x");
+		var y = document.getElementById("y");
+
+	 	var printResalt = document.getElementById("printResalt");
+
+		function resalt() {
+
+		 	x = parseFloat(x.value);
+		 	y = parseFloat(y.value);
+
+		 	var r = 5;
+		 	r = r * r;
+
+		 	var point = (x * x) + (y * y);
+
+		 	if (point <= r) {
+
+		 		printResalt.innerHTML = "Point is within a circle";
+		 	}else {
+
+		 		printResalt.innerHTML = "Point is now within a circle";
+		 	}
+
+		 } 
+	</script>
+</body>
+</html>

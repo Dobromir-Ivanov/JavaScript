@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculates rectangle’s area</title>
+</head>
+<body>
+	<header>
+		<h3>
+		Write an expression that calculates rectangle area by given width and height.
+		</h3>
+	</header>
+	<section>
+		<table>
+			<tr>
+				<td><label for="w">Width: </label></td>
+				<td><input id="w"></td>
+			</tr>
+			<tr>
+				<td><label for="h">Height: </label></td>
+			    <td><input id="h"></td>
+			</tr>
+		</table>
+		<br/>
+		<button onclick="resalt()">Resalt</button>
+		<label id="printResalt"></label>
+	</section>
+	<script type="text/javascript">
+		var width = document.getElementById("w");
+		var height = document.getElementById("h");
+
+		function resalt() {
+			width = parseInt(width.value);
+			height = parseInt(height.value);
+			var resalt = width * height;
+
+			document.getElementById("printResalt").innerHTML = "Area is: " + resalt;
+
+		}
+	</script>
+</body>
+</html>

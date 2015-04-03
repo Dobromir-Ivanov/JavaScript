@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bigger number of five variables</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 35px;
+			margin-left: 20px;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a script that finds the biggest of three integers using nested if statements.
+	</h3>
+	<br/>
+	<label>Enter five numbers! </label>
+	<div>
+		<table>
+			<tr>
+				<td><label for="numFir">Numbers first:</label></td>
+				<td><input id="numFir"></td>
+			</tr>
+			<tr>
+				<td><label for="numSec">Numbers second:</label></td>
+				<td><input id="numSec"></td>
+			</tr>
+			<tr>
+				<td><label for="numThi">Numbers thirt:</label></td>
+				<td><input id="numThi"></td>
+			</tr>
+			<tr>
+				<td><label for="numFour">Numbers four:</label></td>
+				<td><input id="numFour"></td>
+			</tr>
+			<tr>
+				<td><label for="numFiv">Numbers five:</label></td>
+				<td><input id="numFiv"></td>
+			</tr>
+		</table>
+		
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+            var numFirst = parseInt(document.getElementById("numFir").value);
+            var numSecond = parseInt(document.getElementById("numSec").value);
+            var numThirt = parseInt(document.getElementById("numThi").value);
+            var numFour = parseInt(document.getElementById("numFour").value);
+            var numFive = parseInt(document.getElementById("numFiv").value);
+            var printResalt = document.getElementById("printResalt");
+
+            var arr = [numFirst, numSecond, numThirt, numFour, numFive];
+
+            var biggerNumber = arr[0];
+            for (var i = 1; i < arr.length; i++) {
+            	
+            	if (arr[i] > biggerNumber) {
+
+            		biggerNumber = arr[i];
+            	}
+            };
+
+            printResalt.innerHTML = biggerNumber;
+        };
+    </script>
+
+</body>
+</html>

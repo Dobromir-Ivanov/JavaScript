@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Write a function to count the number of divs on the web page</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 37px;
+			margin-left: 20px;
+			font-size: 1.4em;
+			color: #716D69;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a function to count the number of divs on the web page
+		<br>
+		Example: Div => 30
+	</h3>
+	<br/>
+
+	<!--<label>Enter one integer !</label>-->
+	<div>
+		<label for="firInput">Enter element "Div": </label>
+    	<input type="text" id="firInput" />
+
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+            var element = document.getElementById("firInput").value,
+            	printResalt = document.getElementById("printResalt");
+                
+            var resalt = countElemnt(element);
+            
+        	printResalt.innerHTML = 'Resalt is: ' + resalt;
+        };
+
+
+        function countElemnt(element) {
+        	var colectionOfElements = document.getElementsByTagName(element);
+        	return colectionOfElements.length;
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Maximal increasing sequence in an array</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 35px;
+			margin-left: 20px;
+			font-size: 1.4em;
+			color: #716D69;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a script that finds the maximal increasing sequence in an array. 
+		Example: {3, 2, 3, 4, 2, 2, 4} => {2, 3, 4}.
+	</h3>
+	<br/>
+	<label>Enter sequence of numbers!</label>
+	<div>
+		<input id="numFir">
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+            var inputFirst = document.getElementById("numFir").value;
+            var printResalt = document.getElementById("printResalt");
+
+            var arrOfNumbers = inputFirst.split(", "),
+            contRepeat= 0,
+            sequence = [],
+            contForResalt = 0,
+            sequenceForResalt;
+            
+
+            for (var i = 0; i < arrOfNumbers.length; i++) {
+
+            	if ( parseInt(arrOfNumbers[i]) + 1 === parseInt(arrOfNumbers[i + 1])){
+            		contRepeat++;
+            		sequence.push(arrOfNumbers[i]);
+
+            		if (contRepeat > contForResalt) {
+            			contForResalt = contRepeat;
+            			sequenceForResalt = sequence;
+            		};
+
+            	} else if (parseInt(arrOfNumbers[i]) + 1 !== parseInt(arrOfNumbers[i])) {
+            		contRepeat = 0;
+            	};
+            
+            };
+
+            var ultimNumberForArr = sequenceForResalt[sequenceForResalt.length - 1];
+            sequenceForResalt.push( parseInt(ultimNumberForArr) + 1);
+
+            var resalt = sequenceForResalt.join(", ");
+        	printResalt.innerHTML = "{" + resalt + "}";
+        };
+    </script>
+
+</body>
+</html>

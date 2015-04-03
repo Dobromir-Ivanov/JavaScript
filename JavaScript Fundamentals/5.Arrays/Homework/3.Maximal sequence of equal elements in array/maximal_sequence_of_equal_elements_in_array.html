@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Maximal sequence of equal elements in array!</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 35px;
+			margin-left: 20px;
+			font-size: 1.4em;
+			color: #716D69;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a script that finds the maximal sequence of equal elements in an array. <br>
+		Example: {2, 1, 1, 2, 3, 3, 2, 2, 2, 1} => {2, 2, 2}.
+	</h3>
+	<br/>
+	<label>Enter sequence of numbers!</label>
+	<div>
+		<input id="numFir">
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+            var inputFirst = document.getElementById("numFir").value;
+            var printResalt = document.getElementById("printResalt");
+
+            var arrOfNumbers = inputFirst.split(", "),
+            contRepeat= 1,
+            sequence,
+            contForResalt = 0,
+            sequenceForResalt;
+            
+
+            for (var i = 1; i < arrOfNumbers.length; i++) {
+
+            	if (arrOfNumbers[i] === arrOfNumbers[i - 1]) {
+            		contRepeat++;
+            		sequence = arrOfNumbers[i];
+            	}
+
+            	if (contRepeat > contForResalt) {
+            		contForResalt = contRepeat;
+            		sequenceForResalt = sequence;
+            	};
+
+            	if (arrOfNumbers[i] !== arrOfNumbers[i - 1]) {
+            		contRepeat = 1;
+            	};
+            
+            };
+
+            arrOfNumbers = new Array(contForResalt);
+            for (var i = 0; i < contForResalt; i++) {
+            	arrOfNumbers[i] = sequenceForResalt;
+            };
+
+            var resalt = arrOfNumbers.join(", ");
+        	printResalt.innerHTML = "{" + resalt + "}";
+        };
+    </script>
+
+</body>
+</html>

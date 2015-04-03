@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search the bigger element of bigger than its neighbors</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 37px;
+			margin-left: 20px;
+			font-size: 1.4em;
+			color: #716D69;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a function that returns the index of the first element in array that is bigger than its neighbors, or -1, if there’s no such element.<br>
+		Use the function from the previous exercise.
+
+		<br>
+		Example: [4, 5, 8, 4, 9, 8, 4] 
+		<br>
+		Resalt: 2 "8 is first value the bigger of array 5<-8->4"
+	</h3>
+	<br/>
+
+	<label>Enter elements for array divided <b>", "!</b></label>
+	<div>
+		<label for="inputArr">Enter array: </label>
+    	<input type="text" id="inputArr" />
+
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+        	var arr = document.getElementById("inputArr").value.split(', ').map(Number),
+            	printResalt = document.getElementById("printResalt");
+                
+            var position = firstBiggerValue(arr);
+            if (position > 0) {
+            	printResalt.innerHTML = 'Value of position ' + position + ' bigger value is: ' + arr[position];
+            } else{
+            	printResalt.innerHTML = 'Resalt is: ' + position;
+            };
+            
+        	
+        };
+
+        function firstBiggerValue (arr) {
+        	var index = -1;
+        	for(var i in arr){
+        		if (elementsIsBigger(arr, parseInt(i))) {
+        			index = i;
+        			return index;
+        		};
+        	}
+
+        	return index;
+        }
+
+
+        function elementsIsBigger(arr, position) {
+        	var resalt = NaN,
+        		valueOfPosition = arr[position],
+        		leftValue = arr[position - 1],
+        		righrValue = arr[position + 1];
+
+        	if (valueOfPosition > leftValue && valueOfPosition > righrValue) {
+        		resalt = true;
+        	}else{
+        		resalt = false;
+        	};
+        	return resalt;
+        };
+    </script>
+
+</body>
+</html>

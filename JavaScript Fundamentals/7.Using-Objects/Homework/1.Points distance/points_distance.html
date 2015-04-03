@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculate the distance between two points</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 37px;
+			margin-left: 28px;
+			font-size: 1.4em;
+			color: #716D69;
+		}
+		input {
+			height: 20px;
+			width: 80px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+	Write functions for working with shapes in standard Planar coordinate system.<br>
+	&nbsp;&nbsp;-Points are represented by coordinates P(X, Y)<br>
+	&nbsp;&nbsp;-Lines are represented by two points, marking their beginning and ending<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L(P1(X1,Y1), P2(X2,Y2))<br>
+	&nbsp;&nbsp;-Calculate the distance between two points<br>
+	&nbsp;&nbsp;-Check if three segment lines can form a triangle
+
+		
+	</h3>
+	<br/>
+
+	<label>Enter coordinates of points <b>P(x, y)!</b></label>
+	<div>
+		<table>
+			<tr>
+				<td><label for="p1">P1: </label></td>
+				<td><input type="text" id="p1" /></td>
+			</tr>
+			<tr>
+				<td><label for="p2">P2: </label></td>
+				<td><input type="text" id="p2" /></td>
+			</tr>
+			<tr>
+				<td><label for="p3">P3: </label></td>
+				<td><input type="text" id="p3" /></td>
+			</tr>
+				
+    			
+		</table>
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+        	var cordFirstPoint = document.getElementById("p1").value.split(', ').map(Number),
+        		cordSecondPoint = document.getElementById("p2").value.split(', ').map(Number),
+        		cordThirdPoint = document.getElementById("p3").value.split(', ').map(Number),
+            	printResalt = document.getElementById("printResalt");
+
+            var P1 = bildPoints(cordFirstPoint[0],cordFirstPoint[1]),
+            	P2 = bildPoints(cordSecondPoint[0],cordSecondPoint[1]),
+            	P3 = bildPoints(cordThirdPoint[0],cordThirdPoint[1]),
+                distance = distanceOfTwoPints(P1, P2),
+                triangleOfPoints = triangleOfTherdPoints(P1, P2, P3);
+
+
+        	printResalt.innerHTML = 'Distance between of (P1, P2): ' + distance + '<br>' +
+        								'Points crear triangle: ' + triangleOfPoints;
+        };
+
+        function bildPoints(x, y) {
+        	return {
+        		x: x,
+        		y: y,
+        		position: x + y,
+        	}
+        }
+
+        function distanceOfTwoPints(point1, point2) {
+        	var a = point1.x - point2.x,
+        		b = point1.y - point2.y,
+        		distance = Math.sqrt((a * a) + (b * b));
+        	return distance.toFixed(2);
+        }
+
+        function triangleOfTherdPoints(point1, point2, point3) {
+        	var isTriangle = 'Erorr!';
+
+        	if ((point1.x === point2.x && point1.x === point3.x) || 
+        			(point1.y === point2.y && point1.y === point3.y)) {
+
+        		isTriangle = false;
+        	} else{
+        		isTriangle = true;
+        	};
+        	return isTriangle;
+        }
+
+    </script>
+
+</body>
+</html>

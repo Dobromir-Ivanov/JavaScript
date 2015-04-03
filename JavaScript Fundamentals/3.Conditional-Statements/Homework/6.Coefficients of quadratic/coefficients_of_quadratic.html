@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Coefficients of quadratic</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 35px;
+			margin-left: 20px;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a script that enters the coefficients a, b and c of a quadratic equation;<br>
+		a*x2 + b*x + c = 0<br>
+		and calculates and prints its real roots. Note that quadratic equations may have 0, 1 or 2 real roots.
+	</h3>
+	<br/>
+	<label>Enter thirts numbers!</label>
+	<div>
+		<label for="a">a:</label>
+		<input id="a">
+
+		<label for="b">b:</label>
+		<input id="b">
+
+		<label for="c">c:</label>
+		<input id="c">
+
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+            var a = parseInt(document.getElementById("a").value)
+            var b = parseInt(document.getElementById("b").value)
+            var c = parseInt(document.getElementById("c").value)
+            var printResalt = document.getElementById("printResalt");
+
+            var x1;
+            var x2;
+            var discrim = (b * b) - (4 * a * c);
+
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                printResalt.innerHTML = "Enter thirts numbers (a, b, c)!";
+
+            } else {
+
+
+                if (discrim == 0) {
+                    x1 = -b / (a * a);
+                    printResalt.innerHTML = "Quadratic equation has one real root!" + "<br>" +
+                    						"x = " + x1;
+
+                } else if (discrim > 0) {
+
+                    x1 = (-b + Math.sqrt(discrim)) / (2 * a);
+                    x2 = (-b - Math.sqrt(discrim)) / (2 * a);
+                    printResalt.innerHTML = "Equation has two distinct real roots!" + "<br>" +
+                    						"x1 = " + x1 + "<br>" + "x2=" + x2;
+
+                } else if (discrim < 0) {
+                    printResalt.innerHTML = "Quadratic equation has no real roots!";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

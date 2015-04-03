@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Checks for given integer</title>
+</head>
+<body>
+	<h3>
+		Write an expression that checks for given integer if its third digit (right-to-left) is 7. E. g. 1732 => true
+	</h3>
+	<br/>
+
+	<label for="textValue">Enter number: </label>
+	<input id="textValue">
+	<button onclick="resalt()">Resalt</button>
+	<br/>
+	<label>Resalt is: </label>
+	<label id="printResalt"></label>
+
+	<script type="text/javascript">
+		var num = document.getElementById("textValue");
+
+		function resalt() {
+			var digit = 1732;
+			num = parseInt(num.value);
+
+			var resalt = digit / 100;
+			resalt = parseInt(resalt) % 10;
+
+			var buleanAnswer = false;
+
+			if (resalt === num) {
+
+				buleanAnswer = true;
+			};
+
+			document.getElementById("printResalt").innerHTML = buleanAnswer;
+		}
+
+	</script>
+</body>
+</html>

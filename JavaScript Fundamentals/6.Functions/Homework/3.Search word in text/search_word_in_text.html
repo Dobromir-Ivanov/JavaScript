@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>Finds all the occurrences of word in a text</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 37px;
+			margin-left: 20px;
+			font-size: 1.4em;
+			color: #716D69;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a function that finds all the occurrences of word in a text
+		<br>
+		-The search can case sensitive or case insensitive
+		<br>
+		-Use function overloading
+	</h3>
+	<br/>
+
+	<div>
+		<label for="firInput">Enter word for search: </label>
+		<br>
+		<input type="text" id="firInput">
+		<button onclick="Resalt()">Resalt</button>
+		<br>
+		<label for="textArea">Enter text;</label>
+		<br>
+    	<textarea type="text" id="textArea" cols="50" rows="10"></textarea>
+		
+
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+            var wordForSearch = document.getElementById("firInput").value,
+            	text = document.getElementById("textArea").value,
+            	printResalt = document.getElementById("printResalt");
+                
+            var resalt = searchWord(text, wordForSearch);
+            
+        	printResalt.innerHTML = 'Word "' + wordForSearch + '" occurrences in a text- ' + resalt;
+        };
+
+
+        function searchWord(text, word) {
+
+        	var arrOfWords = text.split(' '),
+        		cont = 0,
+        		wordOfIndex;
+
+        	word = word.toUpperCase();
+        	for (var i = 0, len = arrOfWords.length; i < len; i++) {
+        		wordOfIndex = arrOfWords[i].toUpperCase();
+        		if (word === wordOfIndex) {
+        			cont++;
+        		};
+        	};
+
+        	return cont;
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Name on input digit</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 35px;
+			margin-left: 20px;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write script that asks for a digit and depending on the input shows the name of that digit (in English) using a switch statement.
+	</h3>
+	<br/>
+	<label>Enter first numbers! </label>
+	<div>
+		<label for="num">Numbers: </label>
+		<input id="num">
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+            var num = parseInt(document.getElementById("num").value)
+            var printResalt = document.getElementById("printResalt");
+
+            var name;
+
+            switch(num){
+                case 0: name = "0: zero"; break;
+                case 1: name = "1: one"; break;
+                case 2: name = "2: two"; break;
+                case 3: name = "3: three"; break;
+                case 4: name = "4: four"; break;
+                case 5: name = "5: five"; break;
+                case 6: name = "6: six"; break;
+                case 7: name = "7: seven"; break;
+                case 8: name = "8: eight"; break;
+                case 9: name = "9: nine"; break;
+
+                default: name = "'Number 0-9"; break;
+            }
+
+            printResalt.innerHTML = name;
+        }
+
+    </script>
+
+</body>
+</html>

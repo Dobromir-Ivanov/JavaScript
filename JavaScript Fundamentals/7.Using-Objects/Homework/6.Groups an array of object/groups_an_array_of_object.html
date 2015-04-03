@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Groups an array of persons by age, first or last name. </title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 37px;
+			margin-left: 28px;
+			font-size: 1.4em;
+			color: #716D69;
+		}
+		input {
+			height: 20px;
+			width: 80px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a function that finds the youngest person in a given array of persons and prints his/hers full name.<br>
+		-Each person have properties firstname, lastname and age, as shown:<br>
+		var persons = [<br>
+	    &nbsp;&nbsp;{ firstname : 'Katq', lastname: 'Kirilova', age: 25},<br>
+	  	&nbsp;&nbsp;{ firstname : 'Pinko', lastname: 'Palino', age: 40},<br>
+	  	&nbsp;&nbsp;{ firstname : 'Gosho', lastname: 'Petrov', age: 32},<br>
+	  	&nbsp;&nbsp;{ firstname : 'Bay', lastname: 'Ivan', age: 16},<br>
+	  	&nbsp;&nbsp;{ firstname : 'Petq', lastname: 'Kostadinova', age: 5}<br>
+	  	&nbsp;];
+	</h3>
+	<br/>
+
+	<div>
+		<label>Youngest person is: </label>
+
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+            var	printResalt = document.getElementById("printResalt");
+
+            var persons = [
+	  				{ firstname : 'Katq', lastname: 'Kirilova', age: 25},
+	  				{ firstname : 'Pinko', lastname: 'Palino', age: 40},
+	    			{ firstname : 'Gosho', lastname: 'Petrov', age: 32},
+	  				{ firstname : 'Bay', lastname: 'Ivan', age: 16},
+	  				{ firstname : 'Petq', lastname: 'Kostadinova', age: 5}
+	  			];
+
+	  		var grupin = persons.byGroups('firstname');
+	  		for(var index in grupin){
+	  		    console.log(grupin[index].fullName());
+	  		};
+        };
+
+        Array.prototype.byGroups = function(prop) {
+        	var myArr = this,
+        		arrGroups = [];
+
+        	while(myArr.length > 0){
+        		
+        		var firstValue = myArr[0];
+        		for(var index in myArr){
+        		    if (firstValue[prop] > myArr[index][prop]) {
+        		    	firstValue = myArr[index];
+        		    };
+        		};
+        		myArr.splice(myArr.indexOf(firstValue),1);
+        		arrGroups.push(firstValue);
+        	};
+        	return arrGroups;
+        };
+
+        Object.prototype.fullName = function() {
+        	return this.firstname + ' ' + this.lastname + ' ' + this.age;
+        }
+
+    </script>
+
+</body>
+</html>

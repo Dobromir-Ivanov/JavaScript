@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Max and min number from a sequence of numbers</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 35px;
+			margin-left: 20px;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a script that finds the max and min number from a sequence of numbers.
+	</h3>
+	<br/>
+	<label>Enter sequence of numbers divided of space! </label>
+	<div>
+		<label for="num">Numbers: </label>
+		<input id="num">
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+            var num = document.getElementById("num").value;
+            var printResalt = document.getElementById("printResalt");
+            //printResalt.innerHTML = "Resalt is  of console!";
+
+            var arrOfInput = num.split(" "),
+            	arrOfNumbers = [],
+            	minNumbers, 
+            	maxNumbers;
+				index = 0;
+
+				
+            for (var i = 0; i < num.length; i++) {
+
+            	if (!isNaN(arrOfInput[i])) {
+            		arrOfNumbers[index] = parseInt(arrOfInput[i]);
+            		index++;
+            	};
+            };
+
+            minNumbers = arrOfNumbers[0];
+            maxNumbers = arrOfNumbers[0];
+            for (var i = 1; i < arrOfNumbers.length; i++) {
+
+            	if (minNumbers > arrOfNumbers[i]) {
+            		minNumbers = arrOfNumbers[i];
+            	};
+
+            	if (maxNumbers < arrOfNumbers[i]) {
+            		maxNumbers = arrOfNumbers[i];
+            	};
+            };
+
+            printResalt.innerHTML = "Min number is: " + minNumbers + "<br>" +
+            						"Max number is: " + maxNumbers;
+        }
+
+    </script>
+
+</body>
+</html>

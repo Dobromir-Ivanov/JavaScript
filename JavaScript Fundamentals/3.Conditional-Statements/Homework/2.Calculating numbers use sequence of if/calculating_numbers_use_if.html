@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculating numbers use sequence of if</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 35px;
+			margin-left: 20px;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a script that shows the sign (+ or -) of the product of three real numbers without calculating it. Use a sequence of if statements.
+	</h3>
+	<br/>
+	<div>
+		<label for="numFirs">a:</label>
+		<input id="numFirs">
+		<label for="numSec">b:</label>
+		<input id="numSec">
+		<label for="numTer">c:</label>
+		<input id="numTer">
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+            var a = parseInt(document.getElementById("numFirs").value)
+            var b = parseInt(document.getElementById("numSec").value)
+            var c = parseInt(document.getElementById("numTer").value)
+            var printResalt = document.getElementById("printResalt");
+            var br = 0;
+
+            if (a == 0 || b == 0 || c == 0) {
+                printResalt.innerHTML = "NUL";
+
+            } else {
+
+            	if (a > 0) {
+                br++;
+            	}
+                if (b > 0) {
+                    br++;
+                } 
+                if (c > 0) {
+                    br++;
+                } 
+
+                if (br >= 2) {
+                    printResalt.innerHTML = "produkt: +";
+                }else{
+                	printResalt.innerHTML = "produkt: -";
+            	}
+            }
+
+        }
+    </script>
+
+</body>
+</html>

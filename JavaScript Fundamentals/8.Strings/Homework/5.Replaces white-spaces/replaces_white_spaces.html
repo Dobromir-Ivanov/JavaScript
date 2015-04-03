@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Replaces white-spaces</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 37px;
+			margin-left: 28px;
+			font-size: 1.4em;
+			color: #716D69;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a function that replaces non breaking white-spaces in a text with &nbsp;
+	</h3>
+	<p>Text example:</p>
+	<p>
+		We are LiVinG in a YELLOW SUBMARINE. We dOn'T have anything else.<br>
+    	Regions can be nested.
+    </p>
+	<br/>
+
+	<div>
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+            var	str = 'We are LiVinG in a YELLOW SUBMARINE. We dOn\'T have anything else. Regions can be nested.';
+
+			var	printResalt = document.getElementById("printResalt");
+
+
+            printResalt.innerHTML = replacesWhiteSpaces(str);
+        };
+
+        function replacesWhiteSpaces(str) {
+        	return str.replace(/ /g,'&nbsp;');
+        }
+
+    </script>
+
+</body>
+</html>

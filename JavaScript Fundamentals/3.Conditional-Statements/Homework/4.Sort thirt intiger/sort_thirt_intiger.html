@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sort thirt intiger</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 35px;
+			margin-left: 20px;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Sort 3 real values in descending order using nested if statements.
+	</h3>
+	<br/>
+	<label>Enter thirts numbers! </label>
+	<div>
+		<label for="numFir">Numbers first:</label>
+		<input id="numFir">
+		<label for="numSec">Numbers second:</label>
+		<input id="numSec">
+		<label for="numThi">Numbers thirt:</label>
+		<input id="numThi">
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+            var numFirst = parseInt(document.getElementById("numFir").value)
+            var numSecond = parseInt(document.getElementById("numSec").value)
+            var numThirt = parseInt(document.getElementById("numThi").value)
+            var printResalt = document.getElementById("printResalt");
+
+            //var resalt = "";
+            firstValue = {
+            	str: "Numbers first: ", 
+            	valu: numFirst,
+            };
+            secondValue = {
+            	str: "Numbers second: ", 
+            	valu: numSecond,
+            };
+            thirtValue = {
+            	str: "Numbers thirt: ", 
+            	valu: numThirt,
+            };
+
+            if (numFirst === numSecond && numFirst === numThirt ) {
+            	resalt = "The numbers is Equal!"
+
+            }else if (numFirst > numSecond && numFirst > numThirt) {  //The bigger Number is first
+
+	            	if (numSecond > numThirt) {
+	            		printResalt.innerHTML = firstValue.str + firstValue.valu + "<br>" + 							secondValue.str + secondValue.valu + "<br>" + 
+	            								thirtValue.str + thirtValue.valu;
+	            	}else{
+	            		printResalt.innerHTML = firstValue.str + firstValue.valu + "<br>" + 							thirtValue.str + thirtValue.valu + "<br>" + 
+	            								secondValue.str + secondValue.valu;
+	            	};
+	            
+
+	        } else if (numSecond > numFirst && numSecond > numThirt) {  //The bigger Number is second
+
+	            if (numFirst > numThirt) {
+	            	printResalt.innerHTML = secondValue.str + secondValue.valu + "<br>" + 							firstValue.str + firstValue.valu + "<br>" + 
+	            							thirtValue.str + thirtValue.valu;
+	            }else{
+	            	printResalt.innerHTML = secondValue.str + secondValue.valu + "<br>" + 							thirtValue.str + thirtValue.valu + "<br>" + 
+	            							firstValue.str + firstValue.valu;
+	            };
+
+	        } else if (numThirt > numFirst && numThirt > numSecond) {  //The bigger Number is thirt
+
+	            if (numFirst > numSecond) {
+	            	printResalt.innerHTML = thirtValue.str + thirtValue.valu + "<br>" + 							firstValue.str + firstValue.valu + "<br>" + 
+	            							secondValue.str + secondValue.valu;
+	            }else{
+	            	printResalt.innerHTML = thirtValue.str + thirtValue.valu + "<br>" + 							secondValue.str + secondValue.valu + "<br>" + 
+	            							firstValue.str + firstValue.valu;
+	            };
+	        }
+        	
+        }
+    </script>
+
+</body>
+</html>

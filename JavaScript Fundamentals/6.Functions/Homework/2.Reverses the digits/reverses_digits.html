@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reverses the digits</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 37px;
+			margin-left: 20px;
+			font-size: 1.4em;
+			color: #716D69;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a function that reverses the digits of given decimal number.
+		<br>
+		Example: 256 => 652
+	</h3>
+	<br/>
+
+	<!--<label>Enter one integer !</label>-->
+	<div>
+		<label for="firInput">Enter one integer: </label>
+    	<input type="text" id="firInput" />
+
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+            var inputFirst = document.getElementById("firInput").value,
+            	printResalt = document.getElementById("printResalt"),
+            	number = parseInt(inputFirst);
+                
+            var resalt = reversesDigits(number);
+            
+        	printResalt.innerHTML = 'Resalt is: ' + resalt;
+        };
+
+
+        function reversesDigits(num) {
+        	var reversesNumber = 0,
+        		strNumber = num.toString();
+
+        	for (var i = strNumber.length - 1; i >= 0; i--) {
+        		reversesNumber += strNumber[i];
+        	};
+
+        	return parseInt(reversesNumber);
+        };
+    </script>
+
+</body>
+</html>

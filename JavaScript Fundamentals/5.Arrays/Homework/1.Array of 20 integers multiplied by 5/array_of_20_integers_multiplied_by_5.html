@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Array of 20 integers multiplied by 5</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 35px;
+			margin-left: 20px;
+			font-size: 1.4em;
+			color: #716D69;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a script that allocates array of 20 integers and initializes each element by its index multiplied by 5. 
+	</h3>
+	<br/>
+	<label>Resalt is  of console!</label>
+	<div>
+		<button onclick="Resalt()">Resalt</button>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+            var printResalt = document.getElementById("printResalt");
+
+            var arrOfNumbers = new Array(20);
+
+           	for (var i = 0; i < arrOfNumbers.length; i++) {
+           		arrOfNumbers[i] = i * 5;
+           		console.log(arrOfNumbers[i]);
+           	};
+        };
+
+    </script>
+
+</body>
+</html>

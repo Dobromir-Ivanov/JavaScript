@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Function for given property of given object</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 37px;
+			margin-left: 28px;
+			font-size: 1.4em;
+			color: #716D69;
+		}
+		input {
+			height: 25px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a function that checks if a given object contains a given property<br>
+		var obj  = …;<br>
+		var hasProp = hasProperty(obj, 'length');
+
+	</h3>
+	<br/>
+	<div>
+		<p>Enter name of the property in object-Person;  <b>firstName: </b>,<b>secondName: </b>,<b>age: </b>,<b>adres: </b></p>
+	</div>
+	<div>
+		<table>
+			<tr>
+				<td><label for="inputForProp">Name property: </label></td>
+				<td><input type="text" id="inputForProp" /></td>
+				<td><button onclick="Resalt()">Resalt</button></td>
+			</tr>
+		</table>
+		
+	</div>
+	<div>
+		<label>Resalt is: </label>
+		<label id="printResalt"></label>
+	</div>
+
+	<script>
+        function Resalt() {
+            var	property = document.getElementById("inputForProp").value,
+            	printResalt = document.getElementById("printResalt");
+
+            	var petar = {
+            		firstName: "Petar",
+            		secondName: 'Giorgiev',
+            		age: 30,
+            		adres:{
+            			city: "Sofia",
+            			street: "Qne samdanski",
+            		}
+            	};
+
+            var hProperty = hasProperty(petar, property);
+
+        	printResalt.innerHTML = hProperty;
+        };
+
+        function hasProperty(obj, prop) {
+        	
+        	for(var property in obj){
+        		if (property === prop) {
+        			return true;
+        		};
+        	}
+        	return false;
+        }
+    </script>
+
+</body>
+</html>

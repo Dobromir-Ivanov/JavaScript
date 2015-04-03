@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Checks point of circle and rectangle</title>
+</head>
+<body>
+	<h3>
+		Write an expression that checks for given point (x, y) if it is within the circle K( (1,1), 3) and out of the rectangle R(top=1, left=-1, width=6, height=2).
+	</h3>
+	<div>
+		<label>Insert cordinate for point(h, y)!</label>
+		<table>
+			<tr>
+				<td><label>x:</label></td>
+				<td><input id="X"></td>
+			</tr>
+			<tr>
+				<td><label>y:</label></td>
+				<td><input id="Y"></td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<table>
+			<tr>
+				<td><label>Point of Cyrcle: </label></td>
+				<td><label id="pointCircle"></label></td>
+			</tr>
+			<tr>
+				<td><label>Point of Rectangle : </label></td>
+				<td><label id="pointRectangle"></label></td>
+			</tr>
+		</table>
+	</div>
+
+	<script type="text/javascript">
+		function Resalt() {
+			var x = parseInt(document.getElementById("X").value);
+			var y = parseInt(document.getElementById("Y").value);
+
+			var resaltRectangle, resaltCircle;
+
+			//Cordinate of Circle
+			var xCenterCircle = 1,
+				yCenterCircle = 1,
+				radius = 3;
+
+			//Cordinate of Rectangle
+			var left = -1,
+				width = 6,
+				top = 1,
+				height = 2;
+
+			//Control position poit of Rectangle;
+			if ((x >= left && x <= width - 1) && (y <= top && y >= top - height)) {
+				resaltRectangle = true;
+			}else{
+				resaltRectangle = false;
+			};
+
+			//Control position point of Circle;
+			resaltCircle = ((x - xCenterCircle) * (x - xCenterCircle)) + 
+					((y - yCenterCircle) * (y - yCenterCircle)) <= radius * radius;
+
+
+			document.getElementById("pointCircle").innerHTML =  resaltCircle;
+			document.getElementById("pointRectangle").innerHTML =  resaltRectangle;
+
+		}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>extracts html content</title>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Replaces white-spaces</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 37px;
+			margin-left: 28px;
+			font-size: 1.4em;
+			color: #716D69;d
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a function that extracts the content of a html page given as text. The function should return anything that is in a tag, without the tags:
+	</h3>
+	<p>Text example:</p>
+	<p>
+		&lt;html&gt;&lt;head&gt;&lt;title&gt;Sample site&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;div&gt;text&lt;div&gt;more text&lt;/div&gt;and more...&lt;/div&gt;in body&lt;/body&gt;&lt;/html&gt;
+    </p>
+    <p>Result:</p>
+	<p>
+		Sample sitetextmore textand more...in body
+	</p>
+	<div>
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+            var	str = '<html><head><title>Sample site</title></head><body><div>text<div>more text</div>and more...</div>in body</body></html>';
+
+			var	printResalt = document.getElementById("printResalt");
+
+
+            printResalt.innerHTML = remuvedTagOfText(str);
+        };
+
+        function remuvedTagOfText(str) {
+        	
+        	var strTag = str.indexOf('<'),
+        		tag = NaN;
+
+        	while(strTag != -1){
+        		
+        		tag = str.slice(strTag, str.indexOf('>') + 1);
+        		str = str.replace(tag, '');
+        		strTag = str.indexOf('<');
+        	};
+
+        	return str;
+        }
+
+    </script>
+
+</body>
+</html>

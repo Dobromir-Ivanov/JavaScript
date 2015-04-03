@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Integer is odd or even</title>
+</head>
+<body>
+	<div>
+		<p>1.Write an expression that checks if given integer is odd or even.</p>
+		<br/>
+		<br/>
+
+		<input class="textValue">
+		<button onclick="resalt()">Resalt</button>
+		<br/>
+		<label id="printResalt"></label>
+	</div>
+	<script type="text/javascript">
+
+		var num = document.getElementsByClassName("textValue")[0];
+
+		function resalt() {
+			num = parseInt(num.value);
+			var resalt = num % 2;
+
+			var textOfResalt = "Integer is ";
+			if (resalt === 0) {
+
+				textOfResalt += "Odd!";
+			} else {
+
+				textOfResalt += "Even!"
+			}
+
+			document.getElementById("printResalt").innerHTML = textOfResalt;
+		}
+	</script>
+</body>
+</html>

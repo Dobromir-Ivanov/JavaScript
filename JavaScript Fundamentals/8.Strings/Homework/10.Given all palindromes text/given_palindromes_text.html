@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Given all palindromes text</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 37px;
+			margin-left: 28px;
+			font-size: 1.4em;
+			color: #716D69;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a program that extracts from a given text all palindromes, e.g. "ABBA", "lamal", "exe".
+	</h3>
+	<br/>
+	
+	<p>The result is the console!</p>
+	<div>
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+            var	printResalt = document.getElementById("printResalt");
+            	str =  'Write a program that extracts from a given texet all palindromes, e.g. "ABBA", "lamal", "exe".';
+
+            var arrPalindromes = extractsPalindromes(str);
+
+            var myArrOfEmail = arrPalindromes.join(', ');
+            printResalt.innerHTML = myArrOfEmail;
+
+        };
+
+        function extractsPalindromes(str) {
+        	var arrOfPalindromes = [],
+        		arrOfStr = str.match(/\w+/g),
+        		revarse = function (str) {
+        			var arrOfStr = str.split(''),
+        			revarsStr = '';
+
+    		    	for (var i = arrOfStr.length - 1; i >= 0; i--) {
+    		    		revarsStr += arrOfStr[i];
+    		    	};
+    		    	return revarsStr;
+    		    };
+
+        	for(var index in arrOfStr){
+        	    var word = arrOfStr[index], partLeftOfWord, partRightOfWord, partRightOfWord;
+
+        	    if (word.length > 1) {
+        	    	
+        		    if (word === revarse(word)) {
+        		    	arrOfPalindromes.push(word);
+        		    };
+        		};
+        	};
+
+        	return arrOfPalindromes;
+        }
+
+
+    </script>
+
+</body>
+</html>

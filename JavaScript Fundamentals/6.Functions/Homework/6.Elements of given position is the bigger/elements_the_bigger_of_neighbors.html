@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Element of given position is bigger than its two neighbors.</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 37px;
+			margin-left: 20px;
+			font-size: 1.4em;
+			color: #716D69;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a function that checks if the element at given position in given array of integers is bigger than its two neighbors (when such exist).
+		<br>
+		Example: [4, 5, 8, 4, 9, 8, 4] 
+		<br>
+		=> 2 = 8 bigger: true (5,4)
+		<br>
+		=> 5 = 8 bigger: false (9,4)
+	</h3>
+	<br/>
+
+	<!--<label>Enter one integer !</label>-->
+	<div>
+		<label for="inputArr">Enter array: </label>
+    	<input type="text" id="inputArr" />
+    	<br>
+    	<label for="number">Enter position of array: </label>
+    	<input type="text" id="number" />
+
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+        	var arr = document.getElementById("inputArr").value.split(', ').map(Number),
+            	position = parseInt(document.getElementById("number").value),
+            	printResalt = document.getElementById("printResalt");
+                
+            var resalt = elementsIsBigger(arr, position);
+            
+        	printResalt.innerHTML = 'Value of position ' + position + ' is bigger: ' + resalt;
+        };
+
+
+        function elementsIsBigger(arr, position) {
+        	var resalt = NaN,
+        		valueOfPosition = arr[position],
+        		leftValue = arr[position - 1],
+        		righrValue = arr[position + 1];
+
+        	if (valueOfPosition > leftValue && valueOfPosition > righrValue) {
+        		resalt = true;
+        	}else{
+        		resalt = false;
+        	};
+        	return resalt;
+        };
+    </script>
+
+</body>
+</html>

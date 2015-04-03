@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Change the bigger integer</title>
+	<style type="text/css">
+
+		button {
+  			width: 152px;
+  			height: 35px;
+			margin-left: 112px;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+
+	<h3>Write an if statement that examines two integer variables and exchanges their values if the first one is greater than the second one.
+	</h3>
+
+	<div>
+		<p>Enter two numbers!</p>
+		
+		<table>
+			<tr>
+				<td><label>First number: </label></td>
+				<td><input id="firstNum"></td>
+			</tr>
+			<tr>
+				<td><label>Second number: </label></td>
+				<td><input id="secondNum"></td>
+			</tr>
+		</table>
+
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<br/>
+	<div>
+		<label>The bigger number is, </label>
+		<label id="printResalt"></label>
+	</div>
+
+	<script type="text/javascript">
+
+		function Resalt() {
+			firstNum = parseInt(document.getElementById("firstNum").value);
+			secondNum = parseInt(document.getElementById("secondNum").value);
+
+			var printResalt = document.getElementById("printResalt"); 
+
+			var biggerNumber = secondNum;
+
+			if (firstNum > biggerNumber) {
+
+				biggerNumber = firstNum;
+				printResalt.innerHTML = "First number: " + biggerNumber;
+
+				// Change value
+				firstNum = secondNum;
+				secondNum = biggerNumber;
+				alert("Changing values, SecondNum = " + secondNum);
+
+			}else{
+
+				printResalt.innerHTML = "Second number: " + biggerNumber;
+				alert("No need to change the values!");
+			};
+		}
+	</script>
+</body>
+</html>

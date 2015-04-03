@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Index of given element in a sorted array of integers by using the binary search</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 35px;
+			margin-left: 20px;
+			font-size: 1.4em;
+			color: #716D69;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a program that finds the index of given element in a sorted array of integers by using the binary search algorithm (find it in Wikipedia).
+		<br>
+		 Example: {4, 19, 1, 2, 0, 5, 4, 9, 6, 4, 1, 2, 0, 5} => 6 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 Resalt: {0, 0, 1, 1, 2, 2, 4, 4, 4, 5, 5, 6, 9, 19} index => 11;
+	</h3>
+	<br/>
+
+	<label>Enter sequence of numbers divided <b>", "</b>!</label>
+	<div>
+		<label for="firInput">Enter value of array: </label>
+    	<input type="text" id="firInput" /><br />
+
+    	<label for="secInput">Enter value for search: </label>
+    	<input type="text" id="secInput" />
+
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+            var inputFirst = document.getElementById("firInput").value;
+            var valueForSerach = parseInt(document.getElementById("secInput").value);
+            var printResalt = document.getElementById("printResalt");
+
+            
+            var sortArr = sortArrays (inputFirst);
+            var positionOfValue = binarySearch(sortArr, valueForSerach);
+
+        	printResalt.innerHTML = '{' + sortArr.join(", ") + '}' + " index => " + positionOfValue;
+        };
+
+        function binarySearch(array, value){
+        	var value,
+        		middle,
+        		index,
+        		left = 0,
+        		right = array.length;
+
+
+    		while (left <= right)
+    		{
+    		    middle = parseInt((left + right) / 2);
+    		    if (array[middle] == value)
+    		    {
+    		        return middle;
+    		    }
+    		    else if (array[middle] > value)
+    		    {
+    		        right = middle - 1;
+    		    }
+    		    else
+    		    {
+    		        left = middle + 1;
+    		    }
+    		 }
+    		 return -1;
+		};
+
+
+        function sortArrays (strOfArray) {
+        	var arrOfNumbers = strOfArray.split(", ").map(Number),
+        		sortArray = [],
+        		minNumber,
+        		index,
+        		lengthOfArrNum = true;
+
+
+        	while(arrOfNumbers.length > 0){
+        		
+        		minNumber = minValue(arrOfNumbers);
+        		sortArray.push(minNumber);
+
+        		index = arrOfNumbers.indexOf(minNumber);
+        		arrOfNumbers.splice(index,1);
+        		lengthOfArrNum = arrOfNumbers.length;
+        	}
+
+        	// Function for min number of array
+        	function minValue (arr) {
+        		var minNumber = arr[0];
+        		for (var i = 0; i < arr.length; i++) {
+
+        			if (minNumber> arr[i]) {
+        				minNumber = arr[i];
+        			};
+        		};
+
+        		return minNumber;
+        	}
+
+        	return sortArray;
+        }
+
+
+
+
+        //  var calls = 0;
+		//	function iSuspectToBeLoopingInfititely( calls) {
+  		//		calls += 1;
+  		//		if (calls > 100) { debugger; }
+		//	}
+    </script>
+
+</body>
+</html>

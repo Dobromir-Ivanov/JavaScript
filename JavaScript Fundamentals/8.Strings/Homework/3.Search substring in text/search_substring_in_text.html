@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search substring in text</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 37px;
+			margin-left: 28px;
+			font-size: 1.4em;
+			color: #716D69;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a JavaScript function that finds how many times a substring is contained in a given text (perform case insensitive search).<br>
+		Example: The target substring is "in". The text is as follows:<br>
+		<br>
+		We are living in an yellow submarine. We don't have anything else. Inside the submarine is very tight. So we are drinking all the day. We will move out of it in 5 days.
+		<br>
+		<br>
+		The result is: 9.
+	
+
+	</h3>
+	<br/>
+
+	<div>
+		<label for="textInput">Enter text;</label>
+		<textarea id="textInput" rows="10" cols="80" style="display: block"></textarea>
+		<label for="strInput">Enter string.</label>
+		<input type="text" id="strInput">
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+            var	text = document.getElementById("textInput").value,
+            	str = document.getElementById("strInput").value,
+            	printResalt = document.getElementById("printResalt");
+
+            printResalt.innerHTML = searchSubstring(text, str);
+        };
+
+        function searchSubstring(text, str) {
+        	var	text = text.toUpperCase();
+        		str = str.toUpperCase()
+        		cont = 0,
+        		position = text.indexOf(str);
+
+        		while(position != -1){
+        			cont++;
+        			position = text.indexOf(str, position + 1);
+        		};
+        	return cont;
+        };
+
+    </script>
+
+</body>
+</html>

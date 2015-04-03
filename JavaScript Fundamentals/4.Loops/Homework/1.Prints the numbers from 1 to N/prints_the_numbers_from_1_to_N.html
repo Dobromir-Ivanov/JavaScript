@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Prints the numbers from 1 to N</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 35px;
+			margin-left: 20px;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a script that prints all the numbers from 1 to N.
+	</h3>
+	<br/>
+	<label>Enter numbers! </label>
+	<div>
+		<label for="num">Numbers: </label>
+		<input id="num">
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+            var num = parseInt(document.getElementById("num").value)
+            var printResalt = document.getElementById("printResalt");
+            printResalt.innerHTML = "Resalt is  of console!";
+
+            for (var i = 0; i <= num; i++) {
+            	console.log(i);
+            };
+
+        }
+
+    </script>
+
+</body>
+</html>

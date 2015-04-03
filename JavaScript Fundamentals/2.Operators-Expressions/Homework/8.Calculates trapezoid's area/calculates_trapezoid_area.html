@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculates trapezoid's area</title>
+</head>
+<body>
+	<h3>
+		Write an expression that calculates trapezoid's area by given sides <b>a</b> and <b>b</b> and height <b>h</b>.
+	</h3>
+	<div>
+		<label>Insert parallel Side (a), parallel Side (b) and Haight(h);</label>
+		<table>
+			<tr>
+				<td><label>a:</label></td>
+				<td><input id="A"></td>
+			</tr>
+			<tr>
+				<td><label>b:</label></td>
+				<td><input id="B"></td>
+			</tr>
+			<tr>
+				<td><label>h:</label></td>
+				<td><input id="H"></td>
+			</tr>
+		</table>
+	</div>
+
+	<button onclick="Resalt()">Resalt</button>
+	<label id="printResalt"></label>
+
+	<script type="text/javascript">
+		function Resalt() {
+			var a = parseInt(document.getElementById("A").value);
+			var b = parseInt(document.getElementById("B").value);
+			var h = parseInt(document.getElementById("H").value);
+
+			var area = ((a + b) * h) / 2;
+			document.getElementById("printResalt").innerHTML = "Area is: " + area;
+		}
+
+	</script>
+</body>
+</html>

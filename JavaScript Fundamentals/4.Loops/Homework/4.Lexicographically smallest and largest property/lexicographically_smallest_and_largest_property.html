@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lexicographically smallest and largest property.</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 35px;
+			margin-left: 20px;
+			font-size: 1.4em;
+			color: #716D69;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a script that finds the lexicographically smallest and largest property in document, window and navigator objects.
+	</h3>
+	<br/>
+	<div>
+		<button onclick="Resalt()">Resalt</button>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+
+            var printResalt = document.getElementById("printResalt");
+
+            printResalt.innerHTML = smallestProperty (document) + largestProperty (document) +
+									smallestProperty (window) + largestProperty (window) +
+            						smallestProperty (navigator) + largestProperty (navigator);
+
+
+            function smallestProperty (obj) {
+            	var smallest = 'zzz';
+
+            	for(var index in obj){
+
+            		if (smallest > index) {
+            			smallest = index;
+            		};
+            	}
+            	return "The smallest lexicographically property in "+obj+ " is " + smallest + "<br>";
+            }
+
+
+            function largestProperty (obj) {
+            	var largest = 'aaa';
+            	
+            	for(var index in obj){
+
+            		if (largest < index) {
+            			largest = index;
+            		};
+            	}
+            	return "The largest lexicographically property in " + obj + " is " + largest + "<br>";
+            }
+            
+        }
+
+    </script>
+
+</body>
+</html>

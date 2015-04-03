@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reverses string</title>
+	<style type="text/css">
+		button {
+  			width: 152px;
+  			height: 37px;
+			margin-left: 28px;
+			font-size: 1.4em;
+			color: #716D69;
+		}
+		input {
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h3>
+		Write a JavaScript function reverses string and returns it:<br>
+		Example: "sample" => "elpmas".
+	</h3>
+	<br/>
+
+	<div>
+		<label for="strInput">Enter string.</label>
+		<input type="text" id="strInput">
+		<button onclick="Resalt()">Resalt</button>
+	</div>
+	<div>
+		<p id="printResalt"></p>
+	</div>
+
+	<script>
+        function Resalt() {
+            var	str = document.getElementById("strInput").value,
+            	printResalt = document.getElementById("printResalt");
+
+            printResalt.innerHTML = revarse(str);
+        };
+
+        function revarse(str) {
+        	var arrOfStr = str.split(""),
+        		revarsStr = '';
+
+        	for (var i = arrOfStr.length - 1; i >= 0; i--) {
+        		revarsStr += arrOfStr[i];
+        	};
+        	return revarsStr;
+        }
+
+    </script>
+
+</body>
+</html>

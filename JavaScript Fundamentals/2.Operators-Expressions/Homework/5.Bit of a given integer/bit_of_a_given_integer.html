@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Bit of a given integer</title>
+</head>
+<body>
+    <h2>
+        Write a boolean expression for finding if the bit 3 (counting from 0) of a given integer is 1 or 0.
+    </h2>
+
+    <label for="num">Number: </label>
+    <input type="text" id="num" />
+    <label for="pos">Position of bit: </label>
+    <input type="text" id="pos" />
+    <button onclick="Resalt()">Resalt</button>
+    <br/>
+    <br/>
+    <textarea rows="3" cols="50" id="textOfResalt"></textarea>
+
+    <script>
+
+        function Resalt() {
+            var number = document.getElementById("num");
+            number = parseInt(number.value);
+
+            var position = document.getElementById("pos");
+                position = parseInt(position.value);
+
+            var inputText = document.getElementById("textOfResalt");
+
+            var maska = 1 << position;
+            var resalt = number & maska;
+            var bit = resalt >> position;
+            var boolBit = bit == 1;
+
+            inputText.innerHTML = "Number " + number + " conver in the bit is: " + number.toString(2)+
+            "\nPosition: " + position + ", has the value: " + bit + 
+            "\nBulion value is: " + boolBit;
+
+        }
+    </script>
+</body>
+</html>

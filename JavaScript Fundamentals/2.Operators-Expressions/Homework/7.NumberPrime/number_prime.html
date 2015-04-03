@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Number is prime</title>
+</head>
+<body>
+	<h3>
+		Write an expression that checks if given positive integer number n (n ≤ 100) is prime. E.g. 37 is prime.
+	</h3>
+
+	<var>
+		<label>Enter number of (0 to 100)</label><br/>
+		<input id="inputValue">
+		<button onclick="Resalt()">Resalt</button><br/>
+		<label id="printResalt"></label>
+	</var>
+	<script type="text/javascript">
+	
+	function Resalt() {
+		var num = document.getElementById("inputValue");
+		num = parseInt(num.value);
+		var printResalt = document.getElementById("printResalt");
+
+		var prime = true;
+
+		if (num < 0 || num > 100) {
+
+			printResalt.innerHTML = "Enter number of 0 to 100!";
+		}else{
+
+			if (num < 2) {
+
+				printResalt.innerHTML = "Number 0 and 1 is now prime is now composite!";
+
+			}else{
+
+				for (var i = 2; i < num; i++) {
+					
+					if (num % i === 0) {
+
+						prime = false;
+					};
+				};
+
+				if (prime) {
+
+					printResalt.innerHTML = "Number: " + num + " is prime!" ;
+
+				}else{
+
+					printResalt.innerHTML = "Number: " + num + " is now prime!" ;
+
+				}
+			};
+
+
+		};
+	}
+
+	</script>
+</body>
+</html>
